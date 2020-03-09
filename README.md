@@ -7,6 +7,7 @@ Wabisabi is a completely modular operating system based on `wasi` and `wadi` spe
 <wabisabi-kernel>
     <kernel-module src="https://cdn.jsdelivr.net/gh/richardanaya/wabisabi/terminal.wasm"/>
     <kernel-module src="https://cdn.jsdelivr.net/gh/richardanaya/wabisabi/filesystem.wasm"/>
+    <kernel-module src="https://cdn.jsdelivr.net/gh/richardanaya/wabisabi/framebuffer.wasm"/>
 </wabisabi-kernel>
 ```
 
