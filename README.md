@@ -10,3 +10,10 @@ Wabisabi is a completely modular operating system based on `wasi` and `wadi` spe
 ```
 
 See it running [here](https://richardanaya.github.io/wabisabi/demo.html)
+
+# Special Files
+
+Wabisabi only has few special files to operate:
+
+* `/kernel/run` - a file that can be written to to run a process
+* `/kernel/modules` - a file that can be written to or read from to activate/list running modules
