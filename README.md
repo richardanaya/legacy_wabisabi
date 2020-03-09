@@ -15,5 +15,38 @@ See it running [here](https://richardanaya.github.io/wabisabi/demo.html)
 
 Wabisabi only has few special files to operate:
 
-* `/kernel/run` - a file that can be written to to run a process
-* `/kernel/modules` - a file that can be written to or read from to activate/list running modules
+* `/kernel/run` - a file that can be written into to run a process
+* `/kernel/load` - a file that can be written into to load a module
+* `/kernel/modules/` - a directory that lists actively running modules
+
+# Starting a process
+
+Start a process by specifying the wasm binary to run with input and output file
+
+```rust
+libw::write_text("/kernel/run","1234->12314->13241")
+```
+
+# List active modules
+
+Active modules just show up as their name under the modules folder
+
+```rust
+libw::list_files("/kernel/modules/")
+```
+
+# Load a module
+
+Load a module by writing a url into the modules directory
+
+```rust
+libw::write_text("/kernel/modules/cowbell","https://cdn.jsdelivr.net/gh/richardanaya/wabisabi/cowbell.wasm")
+```
+
+# Unoad a module
+
+Unload a module by deleting it
+
+```rust
+libw::delete("/kernel/modules/cowbell")
+```
