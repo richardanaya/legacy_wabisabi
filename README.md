@@ -65,9 +65,14 @@ pub fn init() {
 }
 
 #[no_mangle]
-fn write(path: CString, location:usize, size:usize, ptr usize) -> u32 {
+pub fn write(path: CString, location:usize, size:usize, ptr usize) -> u32 {
     js!(window.alert).invoke_1("clonk!");
     SUCCESS
+}
+
+#[no_mangle]
+pub fn name() -> usize {
+    cstr("cowbell")
 }
 ```
 
