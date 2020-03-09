@@ -53,7 +53,7 @@ libw::delete("/kernel/modules/cowbell")
 
 # What are kernel modules?
 
-Kernel modules are web assembly modules that conform to the [`wadi`](https://github.com/richardanaya/wadi) interface. In addition to `wadi` imports, `wabisabi` also offers [`js_ffi`](https://github.com/richardanaya/js_ffi) imports for dynamic javascript invocation. Here's an example of a device that just triggers a window alert.
+Kernel modules are web assembly modules that conform to the [`wadi`](https://github.com/richardanaya/wadi) interface. In addition to [`wadi imported functions`](https://github.com/richardanaya/wadi/blob/master/README.md#wadi-host-interface), wabisabi also offers [`js_ffi imported functions`](https://github.com/richardanaya/js_ffi) for dynamic javascript invocation. Here's an example of a device that just triggers a window alert.
 
 ```rust
 use wadi::{register_device,SUCCESS,BLOCK_FILE,CString,cstr}
