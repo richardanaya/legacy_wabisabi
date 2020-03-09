@@ -1,4 +1,4 @@
-Wabisabi is a completely modular operating system based on (`wasi`)[https://wasi.dev/] and (`wadi`)[https://github.com/richardanaya/wadi] specifications. It's usable by simply using a web component and declaring the kernel modules that should be used.
+Wabisabi is a completely modular operating system based on [`wasi`](https://wasi.dev/) and [`wadi`](https://github.com/richardanaya/wadi) specifications. It's usable by simply using a web component and declaring the kernel modules that should be used.
 
 ```html
 <wabisabi-kernel>
@@ -53,7 +53,7 @@ libw::delete("/kernel/modules/cowbell")
 
 # What are modules?
 
-Modules are web assembly modules that conform to the `wabi` interface. In addition to `wadi` imports, `wabisabi` also offers [`js_ffi`](https://github.com/richardanaya/js_ffi) imports for dynamic javascript invocation.
+Modules are web assembly modules that conform to the [`wadi`](https://github.com/richardanaya/wadi) interface. In addition to `wadi` imports, `wabisabi` also offers [`js_ffi`](https://github.com/richardanaya/js_ffi) imports for dynamic javascript invocation.
 
 ```rust
 use wadi::{register_device,SUCCESS,BLOCK_FILE,CString}
