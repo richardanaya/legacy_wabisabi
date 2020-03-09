@@ -51,6 +51,26 @@ Unload a module by deleting it
 libw::delete("/kernel/modules/cowbell")
 ```
 
+# What are modules?
+
+Modules are web assembly modules that conform to the `wabi` interface. In addition to `wadi` imports, `wabisabi` also offers [`js_ffi`](https://github.com/richardanaya/js_ffi) imports for dynamic javascript invocation.
+
+```rust
+use wadi::{register_device,SUCCESS,BLOCK_FILE,CString}
+use js_ffi::*;
+
+#[no_mangle]
+pub fn init() {
+    register_device("/dev/cowbell",BLOCK_FILE);
+}
+
+#[no_mangle]
+fn write(path: CString, location:usize, size:usize, ptr usize) -> u32 {
+    js!(window.alert).invoke_1("clonk!");
+    SUCCESS
+}
+```
+
 # License
 
 This project is licensed under either of
