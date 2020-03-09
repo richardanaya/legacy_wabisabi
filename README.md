@@ -40,7 +40,7 @@ libw::list_files("/kernel/modules/")
 Load a module by writing a url into the modules directory
 
 ```rust
-libw::write_text("/kernel/modules/cowbell","https://cdn.jsdelivr.net/gh/richardanaya/wabisabi/cowbell.wasm")
+libw::write_text("/kernel/modules/cowbell","https://cowbell.app/cowbell.wasm")
 ```
 
 # Unoad a module
