@@ -51,9 +51,9 @@ Unload a module by deleting it
 libw::delete("/kernel/modules/cowbell")
 ```
 
-# What are modules?
+# What are kernel modules?
 
-Modules are web assembly modules that conform to the [`wadi`](https://github.com/richardanaya/wadi) interface. In addition to `wadi` imports, `wabisabi` also offers [`js_ffi`](https://github.com/richardanaya/js_ffi) imports for dynamic javascript invocation.
+Kernel modules are web assembly modules that conform to the [`wadi`](https://github.com/richardanaya/wadi) interface. In addition to `wadi` imports, `wabisabi` also offers [`js_ffi`](https://github.com/richardanaya/js_ffi) imports for dynamic javascript invocation.
 
 ```rust
 use wadi::{register_device,SUCCESS,BLOCK_FILE,CString,cstr}
