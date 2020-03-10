@@ -1,4 +1,4 @@
-Wabisabi is a completely modular operating system based on [`wasi`](https://wasi.dev/) and [`wadi`](https://github.com/richardanaya/wadi) specifications. It's usable by simply using a web component and declaring the kernel modules that should be used.
+Wabisabi is a microkernel operating system based on [`wasi`](https://wasi.dev/) and [`wadi`](https://github.com/richardanaya/wadi) specifications. It's usable by simply using a web component and declaring the kernel modules that should be used.
 
 ```html
 <wabisabi-kernel>
