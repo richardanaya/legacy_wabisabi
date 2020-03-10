@@ -18,9 +18,9 @@ Wabisabi only has few special files to operate:
 * `/kernel/run` - a file that can be written into to run a process
 * `/kernel/load` - a file that can be written into to load a module
 * `/kernel/modules/` - a directory that lists actively running modules
-* `/kernel/stdin` - a file scope that will be written for file descriptor 0
-* `/kernel/stdout` - a file scope that will be written for file descriptor 1
-* `/kernel/stderr` - a file scope that will be written for file descriptor 2
+* `/kernel/stdin` - a file scope that will handle file descriptor 0
+* `/kernel/stdout` - a file scope that will handle file descriptor 1
+* `/kernel/stderr` - a file scope that will handle file descriptor 2
 
 # Starting a process
 
@@ -46,7 +46,7 @@ Load a module by writing a url into the modules directory
 libw::write_text("/kernel/load","https://cowbell.app/cowbell.wasm")
 ```
 
-# Unoad a module
+# Unload a module
 
 Unload a module by deleting it
 
@@ -64,7 +64,7 @@ use js_ffi::*;
 
 #[no_mangle]
 pub fn init() {
-    register_device("/dev/cowbell",BLOCK_FILE);
+    register_scope("/dev/cowbell");
 }
 
 #[no_mangle]
