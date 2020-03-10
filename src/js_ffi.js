@@ -375,7 +375,7 @@ var js_ffi = {
       .then(response => response.arrayBuffer())
       .then(bytes =>
         WebAssembly.instantiate(bytes, {
-          env: {
+          env: Object.assign({
             jsffithrowerror: function(e) {
               let err = getStringFromMemory(
                 mod.instance.exports.memory.buffer,
@@ -652,13 +652,13 @@ var js_ffi = {
                 )
               );
             }
-          }
+          },(cfg.imports || {}))
         }).then(module => {
           mod = module;
           if (cfg.onLoad) {
             cfg.onLoad(module);
           }
-          module.instance.exports.main();
+          module.instance.exports[cfg.entry || "main"]();
         })
       );
   }
