@@ -1014,6 +1014,7 @@ class Process {
 class WabiSabiKernel extends HTMLElement {
   constructor() {
     super();
+    this.modules = [];
   }
 
   connectedCallback() {
@@ -1028,6 +1029,7 @@ class WabiSabiKernel extends HTMLElement {
     self.wabisabi = this;
     let mod = new KernelModule(this, modUrl);
     mod.init();
+    this.modules.push(mod);
   }
 
   runProcess(app, input, output) {
