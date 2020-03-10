@@ -46,7 +46,7 @@ Load a module by writing a url into the modules directory
 libw::write_text("/kernel/load","https://cowbell.app/cowbell.wasm")
 ```
 
-# Unoad a module
+# Unload a module
 
 Unload a module by deleting it
 
