@@ -13,4 +13,5 @@ crate-type = ["cdylib"]
 lto = true
 
 [dependencies]
-libw = {version="0"}
+cstring = "0.0"
+js_ffi = "0.6"
