@@ -656,10 +656,10 @@ var js_ffi = {
           },(cfg.imports || {}))
         }).then(module => {
           mod = module;
+          result.instance = module.instance;
           if (cfg.onLoad) {
             cfg.onLoad(module);
           }
-          result.instance = module.instance;
           if(cfg.entry !== null){
             module.instance.exports[cfg.entry || "main"]();
           }

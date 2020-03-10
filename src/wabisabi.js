@@ -26,13 +26,17 @@ class KernelModule {
       imports: {
         register_scope: this.register_scope.bind(this),
         device_error: this.device_error.bind(this)
+      },
+      onLoad: () => {
+        let n = this.module.instance.exports.name();
+        this.name = getStringFromMemory(
+          this.module.instance.exports.memory.buffer,
+          n
+        );
+        console.log("\""+this.name + "\" module loading");
+        this.module.instance.exports.init();
       }
     });
-    this.name = getStringFromMemory(
-      this.module.instance.exports.memory.buffer,
-      this.module.instance.exports.name()
-    );
-    this.module.instance.exports.init();
   }
 
   register_scope(scopePtr) {
