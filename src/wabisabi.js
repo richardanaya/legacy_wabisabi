@@ -301,7 +301,7 @@ class Process {
     throw new Error("Not implemented");
   }
 
-  fd_write(fd, dataSpec) {
+  fd_write(fd, iovsPtr, iovsLen, outNumWritten) {
     let data = this.extractData(dataSpec);
     this.kernel.sendDataToFile(fd, data);
   }
@@ -414,7 +414,7 @@ class Process {
     throw new Error("Not implemented");
   }
 
-  extractData(dataSpec) {
+  extractData(iovsPtr, iovsLen) {
     return new Uint8Array([0x48, 0x65, 0x6c, 0x6c, 0x6f]);
   }
 }
