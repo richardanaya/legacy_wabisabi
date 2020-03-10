@@ -1,7 +1,22 @@
+const utf8dec = new TextDecoder("utf-8");
+const utf8enc = new TextEncoder("utf-8");
+
+function getStringFromMemory(mem, start) {
+  const data = new Uint8Array(mem);
+  const str = [];
+  let i = start;
+  while (data[i] !== 0) {
+    str.push(data[i]);
+    i++;
+  }
+  return utf8dec.decode(new Uint8Array(str));
+}
+
 class KernelModule {
   constructor(kernel, url) {
     this.kernel = kernel;
     this.url = url;
+    this.scopes = [];
   }
 
   init() {
@@ -15,12 +30,20 @@ class KernelModule {
     });
   }
 
-  register_scope() {
-    debugger;
+  register_scope(scopePtr) {
+    let scope = getStringFromMemory(
+      this.module.instance.exports.memory.buffer,
+      scopePtr
+    );
+    this.scopes.push(scope);
   }
 
-  device_error() {
-    debugger;
+  device_error(errPtr) {
+    let err = getStringFromMemory(
+      this.module.instance.exports.memory.buffer,
+      errPtr
+    );
+    console.error(err);
   }
 }
 
