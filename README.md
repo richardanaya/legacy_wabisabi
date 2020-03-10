@@ -11,6 +11,8 @@ Wabisabi is a microkernel operating system based on [`wasi`](https://wasi.dev/) 
 
 See it running [here](https://richardanaya.github.io/wabisabi/demo.html)
 
+The TLDR of the architecture is wabisabi acts as an intermediary for handling wasi functionality and enabling applications to read and write to files. Modules allow the delegation of handling the reading/writing to specific files or even whole heirarchies of the filesystem.
+
 # Special Files
 
 Wabisabi only has few special files to operate:
