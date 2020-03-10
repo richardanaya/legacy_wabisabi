@@ -375,7 +375,7 @@ var js_ffi = {
       .then(response => response.arrayBuffer())
       .then(bytes =>
         WebAssembly.instantiate(bytes, {
-          env: Object.assign({
+          env: cfg.overrides || Object.assign({
             jsffithrowerror: function(e) {
               let err = getStringFromMemory(
                 mod.instance.exports.memory.buffer,
@@ -663,15 +663,34 @@ var js_ffi = {
       );
   }
 };
+class KernelModule {
+  constructor(kernel, url) {
+    this.kernel = kernel;
+    this.url = url;
+  }
+
+  init() {
+    js_ffi.run({
+      path: this.url,
+      entry: "init",
+      imports: {}
+    });
+  }
+}
+
 class Process {
   constructor(kernel, app, input, output) {
-    console.error("not implemented");
-    debugger;
-    throw new Error("Not implemented");
+    this.kernel = kernel;
+    this.app = app;
+    this.input = input;
+    this.output = output;
+  }
+
+  run() {
     js_ffi.run({
       path: app,
-      entry: "init",
-      imports: {
+      entry: "_start",
+      overrides: {
         args_get: this.args_get.bind(this),
         args_sizes_get: this.args_sizes_get.bind(this),
         environ_get: this.environ_get.bind(this),
@@ -1000,14 +1019,15 @@ class WabiSabiKernel extends HTMLElement {
   connectedCallback() {
     this.shadow = this.attachShadow({ mode: "open" });
     let modules = this.querySelectorAll("kernel-module");
-    for (let m in modules) {
+    for (let m = 0; m < modules.length; m++) {
       this.loadModule(modules[m].getAttribute("src"));
     }
   }
 
   loadModule(modUrl) {
     self.wabisabi = this;
-    js_ffi.run(modUrl);
+    let mod = new KernelModule(this, modUrl);
+    mod.init();
   }
 
   runProcess(app, input, output) {
