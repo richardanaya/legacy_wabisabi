@@ -64,7 +64,7 @@ use js_ffi::*;
 
 #[no_mangle]
 pub fn init() {
-    register_device("/dev/cowbell",BLOCK_FILE);
+    register_scope("/dev/cowbell");
 }
 
 #[no_mangle]
