@@ -18,6 +18,9 @@ Wabisabi only has few special files to operate:
 * `/kernel/run` - a file that can be written into to run a process
 * `/kernel/load` - a file that can be written into to load a module
 * `/kernel/modules/` - a directory that lists actively running modules
+* `/kernel/stdin` - a file scope that will be written for file descriptor 0
+* `/kernel/stdout` - a file scope that will be written for file descriptor 1
+* `/kernel/stderr` - a file scope that will be written for file descriptor 2
 
 # Starting a process
 
