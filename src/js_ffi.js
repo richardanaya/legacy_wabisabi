@@ -371,6 +371,7 @@ var js_ffi = {
     if (typeof cfg === "string") {
       cfg = { path: cfg };
     }
+    let result = {}
     fetch(cfg.path)
       .then(response => response.arrayBuffer())
       .then(bytes =>
@@ -658,8 +659,10 @@ var js_ffi = {
           if (cfg.onLoad) {
             cfg.onLoad(module);
           }
+          result.instance = module.instance;
           module.instance.exports[cfg.entry || "main"]();
         })
       );
+    return result;
   }
 };

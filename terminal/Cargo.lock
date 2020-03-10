@@ -112,8 +112,8 @@ dependencies = [
 name = "terminal"
 version = "0.1.0"
 dependencies = [
- "cstring",
  "js_ffi",
+ "wadi",
 ]
 
 [[package]]
@@ -121,3 +121,12 @@ name = "unicode-xid"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "826e7639553986605ec5979c7dd957c7895e93eabed50ab2ffa7f6128a75097c"
+
+[[package]]
+name = "wadi"
+version = "0.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c3cadb4c3bc0f3693bbb628777d9660f0140949948ff606730128357347b6ab7"
+dependencies = [
+ "cstring",
+]

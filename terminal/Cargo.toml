@@ -13,5 +13,5 @@ crate-type = ["cdylib"]
 lto = true
 
 [dependencies]
-cstring = "0.0"
+wadi = "0"
 js_ffi = "0.6"

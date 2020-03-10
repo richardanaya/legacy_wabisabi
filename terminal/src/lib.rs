@@ -1,12 +1,12 @@
-use cstring::{cstr};
+use wadi::{cstr, CString, register_scope};
 use js_ffi::*;
 
 #[no_mangle]
 pub fn init() {
-    js!(console.log).invoke_1("Hello terminal");
+    register_scope("/kernel/stdout")
 }
 
 #[no_mangle]
-pub fn name() -> i32 {
+pub fn name() -> CString {
     cstr("terminal")
 }

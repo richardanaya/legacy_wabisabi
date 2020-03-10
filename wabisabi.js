@@ -371,6 +371,7 @@ var js_ffi = {
     if (typeof cfg === "string") {
       cfg = { path: cfg };
     }
+    let result = {}
     fetch(cfg.path)
       .then(response => response.arrayBuffer())
       .then(bytes =>
@@ -658,9 +659,11 @@ var js_ffi = {
           if (cfg.onLoad) {
             cfg.onLoad(module);
           }
+          result.instance = module.instance;
           module.instance.exports[cfg.entry || "main"]();
         })
       );
+    return result;
   }
 };
 class KernelModule {
@@ -670,11 +673,22 @@ class KernelModule {
   }
 
   init() {
-    js_ffi.run({
+    this.module = js_ffi.run({
       path: this.url,
       entry: "init",
-      imports: {}
+      imports: {
+        register_scope: this.register_scope.bind(this),
+        device_error: this.device_error.bind(this)
+      }
     });
+  }
+
+  register_scope() {
+    debugger;
+  }
+
+  device_error() {
+    debugger;
   }
 }
 

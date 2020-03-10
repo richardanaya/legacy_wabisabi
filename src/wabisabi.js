@@ -5,11 +5,22 @@ class KernelModule {
   }
 
   init() {
-    js_ffi.run({
+    this.module = js_ffi.run({
       path: this.url,
       entry: "init",
-      imports: {}
+      imports: {
+        register_scope: this.register_scope.bind(this),
+        device_error: this.device_error.bind(this)
+      }
     });
+  }
+
+  register_scope() {
+    debugger;
+  }
+
+  device_error() {
+    debugger;
   }
 }
 
@@ -22,7 +33,7 @@ class Process {
   }
 
   run() {
-    js_ffi.run({
+    this.module = js_ffi.run({
       path: app,
       entry: "_start",
       overrides: {
