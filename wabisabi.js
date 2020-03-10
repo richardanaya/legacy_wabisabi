@@ -660,13 +660,14 @@ var js_ffi = {
             cfg.onLoad(module);
           }
           result.instance = module.instance;
-          module.instance.exports[cfg.entry || "main"]();
+          if(cfg.entry !== null){
+            module.instance.exports[cfg.entry || "main"]();
+          }
         })
       );
     return result;
   }
 };
-
 const utf8dec = new TextDecoder("utf-8");
 const utf8enc = new TextEncoder("utf-8");
 
@@ -691,21 +692,32 @@ class KernelModule {
   init() {
     this.module = js_ffi.run({
       path: this.url,
-      entry: "init",
+      entry: null,
       imports: {
         register_scope: this.register_scope.bind(this),
         device_error: this.device_error.bind(this)
       }
     });
+    this.name = getStringFromMemory(
+      this.module.instance.exports.memory.buffer,
+      this.module.instance.exports.name()
+    );
+    this.module.instance.exports.init();
   }
 
   register_scope(scopePtr) {
-    let scope = getStringFromMemory(this.module.instance.exports.memory.buffer,scopePtr);
+    let scope = getStringFromMemory(
+      this.module.instance.exports.memory.buffer,
+      scopePtr
+    );
     this.scopes.push(scope);
   }
 
   device_error(errPtr) {
-    let err = getStringFromMemory(this.module.instance.exports.memory.buffer,errPtr);
+    let err = getStringFromMemory(
+      this.module.instance.exports.memory.buffer,
+      errPtr
+    );
     console.error(err);
   }
 }

@@ -660,7 +660,9 @@ var js_ffi = {
             cfg.onLoad(module);
           }
           result.instance = module.instance;
-          module.instance.exports[cfg.entry || "main"]();
+          if(cfg.entry !== null){
+            module.instance.exports[cfg.entry || "main"]();
+          }
         })
       );
     return result;

@@ -22,12 +22,17 @@ class KernelModule {
   init() {
     this.module = js_ffi.run({
       path: this.url,
-      entry: "init",
+      entry: null,
       imports: {
         register_scope: this.register_scope.bind(this),
         device_error: this.device_error.bind(this)
       }
     });
+    this.name = getStringFromMemory(
+      this.module.instance.exports.memory.buffer,
+      this.module.instance.exports.name()
+    );
+    this.module.instance.exports.init();
   }
 
   register_scope(scopePtr) {
