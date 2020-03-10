@@ -3,6 +3,8 @@ build:
 	cd terminal && make && mv terminal.wasm ../
 	cd filesystem && make && mv filesystem.wasm ../
 	cd framebuffer && make && mv framebuffer.wasm ../
+	cd helloworld && make && mv helloworld.wasm ../
+
 
 serve:
 	python3 -m http.server 8080

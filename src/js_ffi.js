@@ -375,8 +375,8 @@ var js_ffi = {
     fetch(cfg.path)
       .then(response => response.arrayBuffer())
       .then(bytes =>
-        WebAssembly.instantiate(bytes, {
-          env: cfg.overrides || Object.assign({
+        WebAssembly.instantiate(bytes, cfg.overrides || {
+          env: Object.assign({
             jsffithrowerror: function(e) {
               let err = getStringFromMemory(
                 mod.instance.exports.memory.buffer,
