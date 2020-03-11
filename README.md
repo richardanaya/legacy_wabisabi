@@ -1,7 +1,7 @@
 Wabisabi is a microkernel operating system based on [`wasi`](https://wasi.dev/) and [`wadi`](https://github.com/richardanaya/wadi) specifications. It's usable by simply using a web component and declaring the kernel modules that should be used.
 
 ```html
-<wabisabi-kernel src="https://cdn.jsdelivr.net/gh/richardanaya/wabisabi/wabisabi.wasm">
+<wabisabi-kernel>
     <kernel-module src="https://cdn.jsdelivr.net/gh/richardanaya/wabisabi/terminal.wasm"/>
     <kernel-module src="https://cdn.jsdelivr.net/gh/richardanaya/wabisabi/filesystem.wasm"/>
     <kernel-module src="https://cdn.jsdelivr.net/gh/richardanaya/wabisabi/framebuffer.wasm"/>
