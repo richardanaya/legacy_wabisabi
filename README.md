@@ -77,6 +77,7 @@ pub fn write(path: CString, data_ptr: usize, data_len: usize) {
 }
 
 // Note: a far more mature kernel module would have much more handler functions
+// Check out the wadi spec.
 
 #[no_mangle]
 pub fn name() -> usize {
