@@ -1,4 +1,12 @@
-** This project is a prototype in development **
+**This project is a prototype in development**
+- [x] ability to load wasi apps and wabi modules with their imports satisfied
+- [ ] implement scope file router
+- [ ] implement open file tracker
+- [ ] implmeent random/time
+- [ ] implement basic file wasi operations (open,read,write,seek)
+- [ ] implement basic file system
+- [ ] implement basic ability for terminal to install remote wasm files via http into file system
+- [ ] implement a primitive terminal that can execute wasm files
 
 Wabisabi is a microkernel operating system based on [`wasi`](https://wasi.dev/) and [`wadi`](https://github.com/richardanaya/wadi) specifications. It's usable by simply using a web component and declaring the kernel modules that should be used.
 
