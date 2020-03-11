@@ -1,7 +1,7 @@
 **This project is a prototype in development**
 - [x] ability to load wasi apps and wabi modules with their imports satisfied
 - [x] give kernel modules access to dynamic javascript
-- [ ] implement scope file router
+- [ ] implement file scope router
 - [ ] implement open file tracker
 - [ ] implmeent random/time
 - [ ] implement basic file wasi operations (open,read,write,seek)
