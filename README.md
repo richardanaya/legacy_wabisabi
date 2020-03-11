@@ -76,6 +76,8 @@ pub fn write(path: CString, data_ptr: usize, data_len: usize) {
     js!(window.alert).invoke_1("clonk!");
 }
 
+// Note: a far more mature kernel module would have much more handler functions
+
 #[no_mangle]
 pub fn name() -> usize {
     // this is the name that will show up under /kernel/modules/
