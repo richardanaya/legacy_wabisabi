@@ -61,7 +61,7 @@ libw::delete("/kernel/modules/cowbell")
 Kernel modules are web assembly modules that conform to the [`wadi`](https://github.com/richardanaya/wadi) interface. In addition to [`wadi imported functions`](https://github.com/richardanaya/wadi/blob/master/README.md#wadi-host-interface), wabisabi also offers [`js_ffi imported functions`](https://github.com/richardanaya/js_ffi) for dynamic javascript invocation. Here's an example of a device that just triggers a window alert.
 
 ```rust
-use wadi::{register_device,SUCCESS,BLOCK_FILE,CString,cstr}
+use wadi::{register_scope,CString,cstr}
 use js_ffi::*;
 
 #[no_mangle]
@@ -70,9 +70,8 @@ pub fn init() {
 }
 
 #[no_mangle]
-pub fn write(path: CString, location:usize, size:usize, ptr usize) -> u32 {
+pub fn write(path: CString, data_ptr: usize, data_len: usize) {
     js!(window.alert).invoke_1("clonk!");
-    SUCCESS
 }
 
 #[no_mangle]
