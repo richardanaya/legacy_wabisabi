@@ -66,16 +66,19 @@ use js_ffi::*;
 
 #[no_mangle]
 pub fn init() {
+    // module declares "I'm going to handle all file operations related to this path"
     register_scope("/dev/cowbell");
 }
 
 #[no_mangle]
 pub fn write(path: CString, data_ptr: usize, data_len: usize) {
+    // writing any data to this file triggers an alert
     js!(window.alert).invoke_1("clonk!");
 }
 
 #[no_mangle]
 pub fn name() -> usize {
+    // this is the name that will show up under /kernel/modules/
     cstr("cowbell")
 }
 ```
